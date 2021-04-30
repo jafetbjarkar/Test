@@ -1,0 +1,2453 @@
+{
+	"info": {
+		"_postman_id": "e84b6e2c-7ace-4131-b107-9ce7af9d20d3",
+		"name": "coreapi",
+		"description": "## After making changes, export the collection:\n1. Right-click **coreapi**\n2. Select **export**\n3. Choose **v2.1**\n4. Save the file to `agr/agr-services/scripts`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "access-groups",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "access-groups",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['Return value is array'] = _.isArray(data);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/access-groups",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"access-groups"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "counting",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['should have name'] = data.name === 'Created from Postman';",
+									"tests['should add user id'] = data.userId === 1;",
+									"tests['should have username'] = data.username === \"System\";",
+									"tests['should have report name'] = data.reportName.length > 1;",
+									"tests['should add created at'] = data.createdAt !== '0001-01-01T00:00:00';",
+									"tests['should add updated at'] = data.updatedAt !== '0001-01-01T00:00:00';",
+									"",
+									"",
+									"// set variable",
+									"tests['should have id'] = data.id !== undefined;",
+									"pm.collectionVariables.set(\"countingId\", data.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Created from Postman\",\n  \"description\": \"\",\n  \"reportId\": 1,\n  \"schedule\": {\n    \"baseDate\": \"2021-03-23\",\n    \"interval\": 1,\n    \"timeBegin\": \"00:00\",\n    \"period\": {},\n    \"toggledDates\": []\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/counting",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['Return value is array'] = _.isArray(data);",
+									"tests['should include username'] = data[0].username == 'System';",
+									"tests['should include report name'] = data[0].reportName.length > 1;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/counting",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['Return value is object'] = _.isObject(data) && !_.isArray(data);",
+									"tests['should have username'] = data.username == 'System';",
+									"tests['should have report name'] = data.reportName.length > 1;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/counting/{{countingId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting",
+								"{{countingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting/404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests['Status code is 404'] = responseCode.code === 404;",
+									"tests['Returns NotFoundResult'] = data.title === 'Not Found' && data.status === 404;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/counting/404",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting",
+								"404"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['should update description'] = data.description === 'Updated from Postman';",
+									"tests['should update updatedAt'] = data.updatedAt !== data.createdAt;",
+									"tests['should have username'] = data.username == 'System';",
+									"tests['should have report name'] = data.reportName.length > 1;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Updated from Postman\",\n    \"description\": \"Updated from Postman\",\n    \"reportId\": 1,\n    \"schedule\": {\n        \"type\": null,\n        \"interval\": 1,\n        \"baseDate\": \"2021-03-23T00:00:00\",\n        \"timeBegin\": \"00:00\",\n        \"timeEnd\": null,\n        \"timeInterval\": null,\n        \"period\": {\n            \"begin\": null,\n            \"end\": null\n        },\n        \"weeklyWeekdays\": null,\n        \"monthlyMonths\": null,\n        \"monthlyType\": null,\n        \"monthlyDayOfMonth\": null,\n        \"monthlyWeekday\": null,\n        \"monthlyLastDayOfMonth\": null,\n        \"monthDays\": null,\n        \"toggledDates\": []\n    },\n    \"userId\": 1,\n    \"nextCountingDate\": null,\n    \"createdAt\": \"2021-03-24T12:52:38.48\",\n    \"updatedAt\": \"2021-03-24T12:52:38.48\",\n    \"reportName\": \"1.01 Urgent Order Required\",\n    \"username\": \"System\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/counting/{{countingId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting",
+								"{{countingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/counting/{{countingId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting",
+								"{{countingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "counting/{id} -> 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 404;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/counting/{{countingId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"counting",
+								"{{countingId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "custom-actions",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "custom-actions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"should contain customActionParameters array\"] = _.isArray(data[0].customActionParameters);",
+									"",
+									"// set variable",
+									"pm.collectionVariables.set(\"customActionId\", data[0].id);",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/custom-actions",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"custom-actions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "custom-actions/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"should contain customActionParameters array\"] = _.isArray(data.customActionParameters);",
+									"",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/custom-actions/{{customActionId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"custom-actions",
+								"{{customActionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "custom-actions/{id}/run",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customActionId\": {{customActionId}},\n  \"customActionParameters\": [\n    {\n      \"procParamName\": \"{{paramName1}}\",\n      \"required\": false,\n      \"paramValue\" : \"No\"\n    },\n    {\n        \"procParamName\": \"{{paramName2}}\",\n        \"required\": false,\n        \"paramValue\": 555\n    }\n  ],\n  \"storedProcedure\": \"{{caProcedure}}\"\n}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/custom-actions/{{customActionId}}/run",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"custom-actions",
+								"{{customActionId}}",
+								"run"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exceptions",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exceptions/error-local-development",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 500'] = responseCode.code === 500;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/exceptions/error-local-development",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"exceptions",
+								"error-local-development"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exceptions/error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 500'] = responseCode.code === 500;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/exceptions/error",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"exceptions",
+								"error"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "forecasts",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forecasts/run",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"string\",\n  \"commandLineParameters\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/forecasts/run",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"forecasts",
+								"run"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forecasts/run-sync",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// ég er nokkuð viss um að þetta fara út því að AppService servar núna API og því er þetta cross api call orðið óþarft.",
+									"tests['Status code is 400'] = responseCode.code === 400;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"string\",\n  \"commandLineParameters\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/forecasts/run-sync",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"forecasts",
+								"run-sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "integration",
+			"item": [
+				{
+					"name": "integration/orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Þetta er route sem getur skilað ytra kerfi pantana upplýsingum, það er öðruvísi authentication á þessu. Er partur af Business Central integration.",
+									"tests['Status code is 403'] = responseCode.code === 403;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/integration/orders",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"integration",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"\r",
+									"// set variable\r",
+									"var data = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"orderLineId\", data[0].OrderLineId);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/orders?orderFilter=all&orderStatus=in_process&originFilter=1,2&showOnlyMyOrders=false&hideZeroLines=false",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "orderFilter",
+									"value": "all"
+								},
+								{
+									"key": "orderStatus",
+									"value": "in_process"
+								},
+								{
+									"key": "originFilter",
+									"value": "1,2"
+								},
+								{
+									"key": "showOnlyMyOrders",
+									"value": "false"
+								},
+								{
+									"key": "hideZeroLines",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ReportId\": 26,\r\n    \"ItemIds\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/orders/create",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/create-planned",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reportId\": 26,\r\n    \"itemIds\": null,\r\n    \"ScheduleId\": 1,\r\n    \"noOfOrderDates\": 2\r\n}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/orders/create-planned",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"create-planned"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/count?...",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/orders/count?orderFilter=all&orderStatus=in_process&originFilter=1,2&showOnlyMyOrders=false&hideZeroLines=false",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"count"
+							],
+							"query": [
+								{
+									"key": "orderFilter",
+									"value": "all"
+								},
+								{
+									"key": "orderStatus",
+									"value": "in_process"
+								},
+								{
+									"key": "originFilter",
+									"value": "1,2"
+								},
+								{
+									"key": "showOnlyMyOrders",
+									"value": "false"
+								},
+								{
+									"key": "hideZeroLines",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/columns",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/orders/columns",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"columns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/by-order-line-ids",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Ids\":[48,103,201,386]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/orders/by-order-line-ids",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"by-order-line-ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"OrderIdList\":\"48,103,201,386\", \"ReviewAction\": \"confirm\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/orders/status",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/recalculate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Ids\":[5,103,201,386]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/orders/recalculate",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"recalculate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders/update-order-lines",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\"columnName\":\"unit_qty_chg\",\"orderLineIds\":[{{orderLineId}}],\"numbers\":[12312]}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/orders/update-order-lines",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"orders",
+								"update-order-lines"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "scheduled-orders",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"// set variable",
+									"var data = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"scheduledOrderId\", data.id);",
+									"",
+									"tests[\"should have report id\"] = !!data.mbeReportId === true;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Created in Postman\",\r\n    \"description\": \"\",\r\n    \"mbeReportId\": 6,\r\n    \"mbeReportName\": \"\",\r\n    \"scheduleId\": 6,\r\n    \"scheduleName\": \"\",\r\n    \"orderFrequency\": 0,\r\n    \"autoConfirmOrder\": false,\r\n    \"splitOrdersOnDeliveryDate\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-orders",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-orders",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-orders/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-orders/{{scheduledOrderId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-orders",
+								"{{scheduledOrderId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-orders/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{scheduledOrderId}},\r\n  \"name\": \"Updated in Postman\",\r\n  \"description\": \"Covid er dautt\",\r\n  \"mbeReportId\": 2,\r\n  \"scheduleId\": 1,\r\n  \"userId\": 1,\r\n  \"orderFrequency\": 7,\r\n  \"createdAt\": \"2021-03-17T15:38:01.415Z\",\r\n  \"updatedAt\": \"2021-03-17T15:38:01.415Z\",\r\n  \"deleted\": false,\r\n  \"reportPublic\": true,\r\n  \"autoConfirmOrder\": false,\r\n  \"splitOrdersOnDeliveryDate\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-orders/{{scheduledOrderId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-orders",
+								"{{scheduledOrderId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-orders/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-orders/{{scheduledOrderId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-orders",
+								"{{scheduledOrderId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "scheduled-tasks",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"",
+									"// set variable",
+									"var data = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"scheduledTaskId\", data.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stgRunName\": \"Created in Postman\",\n    \"schedule\": {\n        \"baseDate\": \"2021-04-14\",\n        \"interval\": 1,\n        \"timeBegin\": \"00:00\",\n        \"period\": {},\n        \"toggledDates\": []\n    },\n    \"description\": \"Created in Postman\",\n    \"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks/{{scheduledTaskId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks",
+								"{{scheduledTaskId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"",
+									"var data = JSON.parse(responseBody);",
+									"tests['status is string'] = typeof data.status === 'string';",
+									"",
+									"tests['stgRunName = \"daily_run\"'] = data.stgRunName === 'daily_run';",
+									"tests['stgRunDescription = All data transfer and more\"'] = data.stgRunDescription === 'All data transfer and more';",
+									"tests['description = Daily job\"'] = data.description === 'Daily job';",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks/1",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stgRunName\": \"Updated in Postman\",\n    \"schedule\": {\n        \"baseDate\": \"2021-04-14\",\n        \"interval\": 1,\n        \"timeBegin\": \"00:00\",\n        \"period\": {},\n        \"toggledDates\": []\n    },\n    \"description\": \"Updated in Postman\",\n    \"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks/{{scheduledTaskId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks",
+								"{{scheduledTaskId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks/{{scheduledTaskId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks",
+								"{{scheduledTaskId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled-tasks/404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 404'] = responseCode.code === 404;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks/{{scheduledTaskId}}",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks",
+								"{{scheduledTaskId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "translations",
+			"item": [
+				{
+					"name": "translations/{language}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests['Status code is 200'] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/translations/en",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"translations",
+								"en"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "scheduled-tasks",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"tests['Status code is 200'] = responseCode.code === 200;",
+									"tests['body null check'] = data !== null;",
+									"tests['access token null check'] = data.token !== null;",
+									"tests['refresh token null check'] = data.authData.refreshToken !== null;",
+									"",
+									"postman.setEnvironmentVariable('token', data.token);",
+									"postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+									"tests['validate token'] = data.token === postman.getEnvironmentVariable('token');",
+									"tests['validate refresh token'] = data.authData.refreshToken === postman.getEnvironmentVariable('refreshToken');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "grant_type=password&username={{username}}&password={{password}}"
+						},
+						"url": {
+							"raw": "{{urlPrefix}}/login",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Run Scheduled Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{urlPrefix}}/scheduled-tasks/2/run",
+							"host": [
+								"{{urlPrefix}}"
+							],
+							"path": [
+								"scheduled-tasks",
+								"2",
+								"run"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Better to just use the login route in collection",
+					"",
+					"// var urlPrefix = pm.environment.get(\"urlPrefix\");",
+					"// var username = pm.environment.get(\"username\");",
+					"// var password = pm.environment.get(\"password\");",
+					"",
+					"// pm.sendRequest({",
+					"//     url: `${urlPrefix}/coreapi/login`,",
+					"//     method: 'POST',",
+					"//     header: {",
+					"//         'content-type': 'application/x-www-form-urlencoded'",
+					"//     },",
+					"//     body: {",
+					"//         mode: 'raw',",
+					"//         raw: `grant_type=password&username=${username}&password=${password}`",
+					"//     }",
+					"// }, function (err, response) {",
+					"//   data = response.json();",
+					"//   postman.setEnvironmentVariable('accessToken', data.token);",
+					"//   postman.setEnvironmentVariable('refreshToken', data.authData.refreshToken);",
+					"// });"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8198ceb5-7104-4abd-8ae1-51d827bcc962",
+			"key": "countingId",
+			"value": ""
+		},
+		{
+			"id": "35254da4-413e-402d-9afa-8cb19886230e",
+			"key": "orderLineId",
+			"value": ""
+		},
+		{
+			"id": "2527f4e7-b684-4dbd-815c-021e5268cad2",
+			"key": "reportId",
+			"value": ""
+		},
+		{
+			"id": "d2ada8ce-f0f6-4c73-abb2-bbf040785d53",
+			"key": "scheduledOrderId",
+			"value": ""
+		},
+		{
+			"id": "9eac07c2-2aff-433f-91b7-2d612348db5d",
+			"key": "scheduleId",
+			"value": ""
+		},
+		{
+			"id": "f51294e9-8d7c-4d89-86a7-80664f44de47",
+			"key": "workspaceId",
+			"value": ""
+		},
+		{
+			"id": "25263877-42b7-4599-986e-daac00ddac5e",
+			"key": "workspaceName",
+			"value": ""
+		},
+		{
+			"id": "d658303b-e3f7-4a1e-8d69-75c8fec0141a",
+			"key": "ordersViewId",
+			"value": ""
+		},
+		{
+			"id": "f033f981-dbb6-4427-a24d-6cf89e308000",
+			"key": "reportGroupId",
+			"value": ""
+		},
+		{
+			"id": "6f1ff941-1732-451e-b1b3-999233da5d38",
+			"key": "settingId",
+			"value": ""
+		},
+		{
+			"id": "b2eb7845-f270-41d2-b93b-723e9023ac5b",
+			"key": "settingKey",
+			"value": ""
+		},
+		{
+			"id": "cc6d3766-1fd3-4922-887d-f7dd24bc1ab8",
+			"key": "dashboardElementId",
+			"value": ""
+		},
+		{
+			"id": "51a65f7a-69cd-47a2-9c98-ee6de3a29b84",
+			"key": "reportColumnId",
+			"value": ""
+		},
+		{
+			"id": "cc35baa9-1c2d-4ae6-9bf8-c0b8bcb6b116",
+			"key": "reportColumn1",
+			"value": ""
+		},
+		{
+			"id": "0c3cf2f7-bcd8-463e-8e61-134111891b45",
+			"key": "mbeReportId",
+			"value": ""
+		},
+		{
+			"id": "5169e608-9ac9-4383-af66-c2cf327f40a1",
+			"key": "mbeReportGroupId",
+			"value": ""
+		},
+		{
+			"id": "b6f9d68a-4576-4030-ad06-cbd1c18e3edc",
+			"key": "customActionId",
+			"value": ""
+		},
+		{
+			"id": "b82150dc-713d-41cd-8b89-3ec0f878e1c8",
+			"key": "settingValue",
+			"value": ""
+		},
+		{
+			"id": "20eed1fe-b3a9-4d02-a28e-7413afcf25c8",
+			"key": "newReportGroupId1",
+			"value": ""
+		},
+		{
+			"id": "e47e26ec-08b0-471e-a3ea-d0d822135797",
+			"key": "newReportGroupId2",
+			"value": ""
+		},
+		{
+			"id": "c8e59bc0-5e6a-4d0e-acd9-d778dafd967c",
+			"key": "scheduledTaskId",
+			"value": ""
+		},
+		{
+			"id": "b78a2436-c5d8-4993-b8ef-25a769107c69",
+			"key": "reportGroupId1",
+			"value": ""
+		},
+		{
+			"id": "a361f3b7-3422-4733-9b3a-a39b4311f385",
+			"key": "reportGroupId2",
+			"value": ""
+		}
+	]
+}
